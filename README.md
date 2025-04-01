@@ -68,18 +68,72 @@ npm start
 
 ## Screenshots
 
-# Authentication
+1.  Authentication
 
 ## Login
 
 ![Login Page](documentation/images/login.png)
 
-[Insert Authentication Screenshots Here]
+## Register
 
-# Customer Pages
+![Register Page](documentation/images/register.png)
 
-[Insert Customer Pages Screenshots Here]
+## Logout
 
-# Restaurant Admin Pages
+![Logout Page](documentation/images/logout.png)
 
-[Insert Restaurant Admin Pages Screenshots Here]
+## Login Successful
+
+![Login Success Page](documentation/images/login_success.png)
+
+2.  Customer Pages
+
+## Customer Landing Page
+
+![Customer Landing Page](documentation/images/customer_landing_page.png)
+
+## Restaurant Menu Page
+
+![Restaurant Landing Page](documentation/images/resturant_menu.png)
+
+## Add To Cart Page
+
+![Add To Cart Page](documentation/images/add_to_cart.png)
+
+## Order Page
+
+![Order Page](documentation/images/order.png)
+
+## Order By Delivery Page
+
+![Order By Delivery Page](documentation/images/order_by_deliver.png)
+
+## Order By Online Page
+
+![COrder By Online Page](documentation/images/order_by_online.png)
+
+## Online Payment Page
+
+![Online Payment Page](documentation/images/online_payment.png)
+
+## Delivery Map Page
+
+![Online Payment Page](documentation/images/delivery_map.png)
+
+3. Restaurant Admin Pages
+
+## Restaurant Logout Page
+
+![Restaurant Logout Page](documentation/images/restaurant_logout.png)
+
+## Restaurant Admin Page
+
+![Restaurant Admin Page](documentation/images/restarant_admin_page.png)
+
+## Update Product Page
+
+![Update Product Page](documentation/images/update_product.png)
+
+## Update Restaurant Page
+
+![Update Restaurant Page](documentation/images/update_restaurant.png)
