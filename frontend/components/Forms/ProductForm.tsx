@@ -169,14 +169,20 @@ function MenuForm({
             value={formData.category}
             onChangeText={(text) => handleFormChange("category", text)}
           />
-          <TouchableOpacity onPress={pickImage} style={styles.imagePicker}>
+          {/* <TouchableOpacity onPress={pickImage} style={styles.imagePicker}>
             {formData.image ? (
               <Image source={{ uri: selectedImage }} style={styles.image} />
             ) : (
               ""
             )}
             <Button title="Pick an image" onPress={pickImage} />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
+          <TextInput
+            placeholder="Image"
+            style={styles.input}
+            value={formData.image}
+            onChangeText={(text) => handleFormChange("image", text)}
+          />
           <View style={styles.buttonContainer}>
             <Button title="Close" onPress={() => setModalVisible(false)} />
             <Button title={product ? "Update" : "Save"} onPress={onSubmit} />

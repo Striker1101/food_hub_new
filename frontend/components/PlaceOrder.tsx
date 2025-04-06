@@ -12,6 +12,7 @@ import {
 } from "@/util/dataType";
 import { getUser, showToast } from "@/util/helperFunction";
 import apiRequest from "@/services/apiRequest";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface OrderFooterProps {
   total: number;
@@ -47,11 +48,12 @@ const PlaceOrder: React.FC<OrderFooterProps> = ({
   useEffect(() => {
     async function fetchRestaurant() {
       const user = await getUser();
+      const restaurantID = await AsyncStorage.getItem("restaurantID");
       if (user?.id) {
         apiRequest
-          .get(`/restaurant/by_user_id/${user.id}`)
+          .get(`/restaurant/${JSON.parse(restaurantID as string)}`)
           .then((res) => {
-            if (res?.data) setRestaurant(res?.data[0]);
+            if (res?.data) setRestaurant(res?.data?.restaurant);
           })
           .catch((err) => console.error("API Error:", err.response?.data));
       }

@@ -98,7 +98,7 @@ export interface Instruction {
 }
 
 export interface BankAccount {
-  bank_number: string;
-  bank_name: string;
-  account_name: string;
+  bank_number: string | null | undefined;
+  bank_name: string | null | undefined;
+  account_name: string | null | undefined;
 }

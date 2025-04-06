@@ -11,7 +11,7 @@ const seedTransactions = async (count) => {
     for (let i = 0; i < count; i++) {
       transactions.push({
         userId: faker.number.int({ min: 1, max: 10 }),
-        paymentMethodId: faker.number.int({ min: 19, max: 24 }),
+        paymentMethodId: faker.number.int({ min: 0, max: 6 }),
         amount: faker.finance.amount(10, 500, 2),
         currency: "USD",
         status: faker.helpers.arrayElement(["pending", "completed", "failed"]),

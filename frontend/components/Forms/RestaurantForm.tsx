@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import { RestaurantType } from "@/util/dataType";
+import { BankAccount, RestaurantType } from "@/util/dataType";
 import apiRequest from "@/services/apiRequest";
 import { defaultRestaurant } from "@/util/defaultData";
 import { showToast } from "@/util/helperFunction";
@@ -44,13 +44,27 @@ function RestaurantForm({ modalVisible, setModalVisible, restaurant }: Props) {
       // If field belongs to 'details'
       setFormData((prev) => ({
         ...prev,
-        details: { ...prev.details, [field]: value },
+        details: {
+          bank_number:
+            prev.details && typeof prev.details === "object"
+              ? prev.details.bank_number ?? null
+              : null,
+          bank_name:
+            prev.details && typeof prev.details === "object"
+              ? prev.details.bank_name ?? null
+              : null,
+          account_name:
+            prev.details && typeof prev.details === "object"
+              ? prev.details.account_name ?? null
+              : null,
+          [field]: value, // Update the specific field
+        } as BankAccount, // Ensure it's correctly typed
       }));
     } else {
       // Normal field update
       setFormData((prev) => ({ ...prev, [field]: value }));
     }
-  };
+  }; 
 
   const onSubmit = () => {
     if (!restaurant?.id) return;
@@ -192,7 +206,7 @@ function RestaurantForm({ modalVisible, setModalVisible, restaurant }: Props) {
               }
               onChangeText={(text) => handleFormChange("account_name", text)}
             />
-            <TouchableOpacity onPress={pickImage} style={styles.imagePicker}>
+            {/* <TouchableOpacity onPress={pickImage} style={styles.imagePicker}>
               {formData.featuredImage ? (
                 <Image
                   source={{ uri: formData.featuredImage }}
@@ -201,7 +215,13 @@ function RestaurantForm({ modalVisible, setModalVisible, restaurant }: Props) {
               ) : (
                 <Button title="Pick an image" onPress={pickImage} />
               )}
-            </TouchableOpacity>
+            </TouchableOpacity> */}
+            <TextInput
+              placeholder="Featured Image"
+              style={styles.input}
+              value={formData.featuredImage}
+              onChangeText={(text) => handleFormChange("featuredImage", text)}
+            />
             <View style={styles.buttonContainer}>
               <Button title="Close" onPress={() => setModalVisible(false)} />
               <Button title="Save" onPress={onSubmit} />

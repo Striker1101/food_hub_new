@@ -8,4 +8,4 @@ const seedProducts = require("./seed/product");
 // seedPaymentMethods();
 // seedTransactions(10);
 // seedRestaurant();
-// seedProducts();
+seedProducts();

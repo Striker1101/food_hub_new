@@ -44,23 +44,7 @@ const RestaurantController = {
       if (!restaurant)
         return res.status(404).json({ msg: "Restaurant not found" });
 
-      const doctors = await restaurant.getDoctors({
-        include: [
-          {
-            model: User,
-            as: "user",
-            attributes: ["id", "firstName", "lastName", "email"],
-          },
-        ],
-      });
-
-      const doctorsWithrestaurantName = doctors.map((doc) => {
-        const doctorObj = doc.toJSON();
-        doctorObj.restaurantName = restaurant.name;
-        return doctorObj;
-      });
-
-      return res.status(200).json({ data: doctorsWithrestaurantName });
+      return res.status(200).json({ restaurant });
     } catch (error) {
       return res
         .status(500)

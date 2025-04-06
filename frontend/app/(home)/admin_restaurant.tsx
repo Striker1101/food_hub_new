@@ -15,9 +15,10 @@ import { ProductType, RestaurantType } from "@/util/dataType";
 import { getUser } from "@/util/helperFunction";
 import RestaurantForm from "@/components/Forms/RestaurantForm";
 import { defaultRestaurant } from "@/util/defaultData";
-import { useNavigation } from "expo-router";
+import { useNavigation, useRouter } from "expo-router";
 import MenuForm from "@/components/Forms/ProductForm";
 import Toast from "react-native-toast-message";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function AdminRestaurant() {
   const [restaurant, setRestaurant] = useState<RestaurantType | null>(null);
@@ -48,8 +49,19 @@ export default function AdminRestaurant() {
     fetchRestaurant();
   }, []);
 
+  const router = useRouter();
+
   return (
     <ScrollView style={styles.container}>
+      <View style={styles.header}>
+        <Ionicons
+          onPress={() => router.back()}
+          name="arrow-back"
+          size={24}
+          color="white"
+        />
+      </View>
+
       <View style={styles.card}>
         {restaurant?.featuredImage && (
           <Image
@@ -152,9 +164,17 @@ function MenuCard({ restaurant }: { restaurant: RestaurantType | null }) {
 }
 
 const styles = StyleSheet.create({
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: 20,
+    backgroundColor: "#1e1e2e", // Updated background color
+    elevation: 5,
+  },
   container: {
     flex: 1,
-    padding: 16,
+    padding: 2,
     backgroundColor: "#f4f4f4",
   },
   card: {

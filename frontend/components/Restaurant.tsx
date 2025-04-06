@@ -4,6 +4,7 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { useRouter } from "expo-router";
 import { RestaurantType } from "@/util/dataType";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface RestaurantProps {
   item: RestaurantType;
@@ -14,7 +15,8 @@ const Restaurant = ({ item }: RestaurantProps) => {
 
   return (
     <Pressable
-      onPress={() =>
+      onPress={async () => {
+        await AsyncStorage.setItem("restaurantID", JSON.stringify(item?.id));
         router.push({
           pathname: "/restaurant",
           params: {
@@ -29,8 +31,8 @@ const Restaurant = ({ item }: RestaurantProps) => {
             website: item.website,
             min_order: item.minimumOrder,
           },
-        })
-      }
+        });
+      }}
       style={styles.container}
     >
       <Image
