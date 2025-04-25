@@ -13,6 +13,7 @@ import { ProductType, RestaurantType } from "@/util/dataType";
 import { defaultProduct } from "@/util/defaultData";
 import apiRequest from "@/services/apiRequest";
 import { showToast } from "@/util/helperFunction";
+import Toast from "react-native-toast-message";
 
 type Props = {
   modalVisible: boolean;
@@ -189,6 +190,7 @@ function MenuForm({
           </View>
         </View>
       </View>
+      <Toast />
     </Modal>
   );
 }

@@ -86,7 +86,7 @@ export default function AdminRestaurant() {
         setModalVisible={setModalVisible}
         restaurant={restaurant || defaultRestaurant}
       />
-      <Toast />
+      {/* <Toast /> */}
     </ScrollView>
   );
 }
@@ -159,6 +159,7 @@ function MenuCard({ restaurant }: { restaurant: RestaurantType | null }) {
         setReloadMenu={setReloadMenu}
         clearProduct={clearProduct}
       />
+      {/* <Toast /> */}
     </View>
   );
 }

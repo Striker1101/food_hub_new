@@ -1,6 +1,7 @@
 const { faker } = require("@faker-js/faker");
 const sequelize = require("../index");
 const User = require("../models/User");
+const bcrypt = require("bcryptjs");
 
 const seedUsers = async (count = 10) => {
   try {
@@ -9,8 +10,8 @@ const seedUsers = async (count = 10) => {
 
     let users = [];
     for (let i = 0; i < count; i++) {
-      const plainPassword = "123123123"; // Default password
-
+      const plainPassword = "123123"; // Default password
+      const salt = await bcrypt.genSalt(10);
       users.push({
         name: faker.person.fullName(),
         code: faker.string.alphanumeric(6),
@@ -19,7 +20,7 @@ const seedUsers = async (count = 10) => {
         email: faker.internet.email(),
         googleID: faker.datatype.boolean() ? faker.string.uuid() : null,
         facebookID: faker.datatype.boolean() ? faker.string.uuid() : null,
-        password: plainPassword,
+        password: await bcrypt.hash(plainPassword, salt),
         profileImage: faker.image.avatar(),
         role: faker.helpers.arrayElement(["restaurant", "customer"]),
         token: faker.datatype.boolean() ? faker.string.uuid() : null,

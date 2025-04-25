@@ -73,7 +73,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ item }) => {
               color: "#fff",
             }}
           >
-            ₹{item?.price}
+            ₦{item?.price}
           </Text>
           <Text style={{ marginTop: 5, borderRadius: 4 }}>
             {[0, 0, 0, 0, 0].map((_, i) => (

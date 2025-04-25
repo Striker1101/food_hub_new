@@ -9,6 +9,7 @@ const seedRestaurant = async () => {
     // const restaurants = [];
     const dataSet = [
       {
+        id: 1,
         userId: 1,
         featuredImage:
           "https://fv5-6.files.fm/thumb_show.php?i=v2a92tk7yt&view&v=1&PHPSESSID=2832807a55a705b4526f5b26549b229bb537bc83",
@@ -23,7 +24,7 @@ const seedRestaurant = async () => {
             id: "0",
             image:
               "https://b.zmtcdn.com/data/pictures/chains/8/51828/1f8008fc1cec3cd7ea2b559c32b1e642.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
-            description: "Indain Burrito • Rs149",
+            description: "a restaurant at bowen university",
           },
         ],
         name: "Forza cafe ",
@@ -44,6 +45,7 @@ const seedRestaurant = async () => {
         },
       },
       {
+        id: 2,
         userId: 2,
         featuredImage:
           "https://fv5-3.files.fm/thumb_show.php?i=6cwvxkmqnb&view&v=1&PHPSESSID=b2eb0d8cb635ec6b4860cd35afec504d1c64f79e",
@@ -65,6 +67,7 @@ const seedRestaurant = async () => {
         },
       },
       {
+        id: 3,
         userId: 3,
         featuredImage:
           "https://fv5-3.files.fm/thumb_show.php?i=rj5zxjgd89&view&v=1&PHPSESSID=b2eb0d8cb635ec6b4860cd35afec504d1c64f79e",
@@ -85,8 +88,8 @@ const seedRestaurant = async () => {
           account_name: "Adeyome Abosede",
         },
       },
-
       {
+        id: 4,
         userId: 4,
         featuredImage:
           "https://images.unsplash.com/photo-1623848932096-b196440bb57b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2hyaW0lMjByZXN0dXJhbnR8ZW58MHx8MHx8fDA%3D",
@@ -102,8 +105,8 @@ const seedRestaurant = async () => {
         latitude: 7.6225782,
         longitude: 4.2052917,
       },
-
       {
+        id: 5,
         userId: 5,
         featuredImage:
           "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXumfbiH2jcIY8xq9QW6B1QGoh3OJ596SnpQ&usqp=CAU",
@@ -146,6 +149,7 @@ const seedRestaurant = async () => {
         },
       },
       {
+        id: 7,
         userId: 7,
         featuredImage:
           "https://fv5-3.files.fm/thumb_show.php?i=ga5zcmp8cs&view&v=1&PHPSESSID=b2eb0d8cb635ec6b4860cd35afec504d1c64f79e",
@@ -167,6 +171,7 @@ const seedRestaurant = async () => {
         },
       },
       {
+        id: 8,
         userId: 8,
         featuredImage:
           "https://fv5-3.files.fm/thumb_show.php?i=cxe9qp3q76&view&v=1&PHPSESSID=b2eb0d8cb635ec6b4860cd35afec504d1c64f79e",
