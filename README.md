@@ -116,10 +116,6 @@ npm start
 
 ![Online Payment Page](documentation/images/online_payment.png)
 
-## Delivery Map Page
-
-![Online Payment Page](documentation/images/delivery_map.png)
-
 3. Restaurant Admin Pages
 
 ## Restaurant Logout Page
