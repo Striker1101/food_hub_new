@@ -1,14 +1,16 @@
 {
   "expo": {
-    "name": "zomato",
-    "slug": "zomato",
+    "name": "foodhub",
+    "slug": "foodhub",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
-    "permissions": ["MEDIA_LIBRARY"],
+    "permissions": [
+      "MEDIA_LIBRARY"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -16,7 +18,11 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.striker1101.foodhub"
     },
     "web": {
       "bundler": "metro",
@@ -43,6 +49,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "ef7cc009-01dd-478a-941a-02d572fd2eeb"
+      }
     }
   }
 }

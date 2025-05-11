@@ -5,7 +5,7 @@ import { general_data } from "../util/general_data";
 
 // Base URL from env
 const backendUrl = general_data.backend_url;
-
+console.log("backendUrl", backendUrl);
 const apiRequest = {
   get: async (path: string, options: { query?: Record<string, any> } = {}) => {
     try {

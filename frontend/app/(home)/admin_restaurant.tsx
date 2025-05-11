@@ -135,7 +135,7 @@ function MenuCard({ restaurant }: { restaurant: RestaurantType | null }) {
           <View style={styles.overlay}>
             <Text style={styles.text}>{product.name}</Text>
             <Text style={styles.price}>
-              ${(parseInt(String(product?.price)) || 0).toFixed(2)}
+              ₦{(parseInt(String(product?.price)) || 0).toFixed(2)}
             </Text>
             <View style={styles.buttonContainer}>
               <Pressable

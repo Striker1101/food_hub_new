@@ -56,7 +56,7 @@ const Register = () => {
         <KeyboardAvoidingView behavior="padding" style={styles.content}>
           {/* Header */}
           <View style={styles.header}>
-            <Text style={styles.title}>Zomato</Text>
+            <Text style={styles.title}>Food Hub</Text>
           </View>
 
           {/* Form */}

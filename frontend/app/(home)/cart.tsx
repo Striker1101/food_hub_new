@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, ScrollView, Pressable } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Pressable,
+  Button,
+} from "react-native";
 import { Ionicons, FontAwesome5 } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,7 +26,6 @@ export default function Cart() {
   const cart = useSelector((state: RootState) => state.cart.cart);
   const dispatch = useDispatch();
   const [products, setProducts] = useState<GroupedProducts[]>();
-  const [id, setID] = useState<string | null>();
 
   const instructions: Instruction[] = [
     { id: "0", name: "Online", iconName: "bell", desc: "Pay using Gateways" },
@@ -35,10 +41,6 @@ export default function Cart() {
     ?.map((item) => item.quantity * item.price)
     .reduce((curr, prev) => curr + prev, 0);
 
-  const toggleInstruction = (id: string) => {
-    setID(id);
-  };
-
   useEffect(() => {
     apiRequest.get("/product").then((res) => {
       if (res?.status == 200) setProducts(res.data);
@@ -47,8 +49,8 @@ export default function Cart() {
 
   return (
     <>
-      <ScrollView>
-        <ScrollView style={styles.container}>
+      <ScrollView style={styles.container}>
+        <ScrollView>
           <View style={styles.header}>
             <Ionicons
               onPress={() => router.back()}
@@ -62,8 +64,8 @@ export default function Cart() {
           <View style={styles.deliveryInfo}>
             <Text style={styles.deliveryText}>
               {" "}
-              Delivery in{" "}
-              <Text style={styles.deliveryHighlight}>35 - 40 mins</Text>
+              Ready in{" "}
+              <Text style={styles.deliveryHighlight}>10 - 15 mins</Text>
             </Text>
           </View>
 
@@ -73,8 +75,8 @@ export default function Cart() {
             <CartItem key={index} item={item} />
           ))}
 
-          <Text style={styles.sectionTitle}>Delivery Instructions</Text>
-          <ScrollView
+          {/* <Text style={styles.sectionTitle}>Delivery Instructions</Text> */}
+          {/* <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
             style={styles.instructionsContainer}
@@ -89,19 +91,12 @@ export default function Cart() {
                 toggleInstruction={toggleInstruction}
               />
             ))}
-          </ScrollView>
+          </ScrollView> */}
 
           <Text style={styles.sectionTitle}>Billing Details</Text>
-          <BillingSummary total={total} selected={instructions[Number(id)]} />
+          {/* <BillingSummary total={total} selected={instructions[Number(id)]} /> */}
         </ScrollView>
-
-        <PlaceOrder
-          total={total}
-          name={params?.name}
-          cart={cart}
-          selected={instructions[Number(id)]}
-        />
-
+        <PlaceOrder total={total} name={params?.name} cart={cart} />
         <View style={{ backgroundColor: "#1e1e2e" }}>
           <View style={{ paddingBottom: 100 }}>
             {products?.map((item, index) =>
@@ -111,6 +106,7 @@ export default function Cart() {
             )}
           </View>
         </View>
+        ß
         <Toast />
       </ScrollView>
     </>

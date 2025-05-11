@@ -18,15 +18,9 @@ interface OrderFooterProps {
   total: number;
   name: string | string[];
   cart: CartItem[];
-  selected: Instruction;
 }
 
-const PlaceOrder: React.FC<OrderFooterProps> = ({
-  total,
-  name,
-  cart,
-  selected,
-}) => {
+const PlaceOrder: React.FC<OrderFooterProps> = ({ total, name, cart }) => {
   const dispatch = useDispatch();
   const [user, setUser] = useState<UserType | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
@@ -62,65 +56,33 @@ const PlaceOrder: React.FC<OrderFooterProps> = ({
   }, [restaurant]);
 
   const handleOrder = () => {
-    if (!selected) {
-      showToast("error", "Error", "Please select a Delivery Method");
-      return;
-    }
-
-    if (selected.id === "1") {
-      apiRequest
-        .post("/order_item", {
-          userId: user?.id,
-          products: JSON.stringify(cartDetail),
-          price: total,
-          paymentMethodId: 24,
-        })
-        .then(() => {
-          showToast(
-            "success",
-            "Order was Successful",
-            "Pick Up at the counter in 30min"
-          );
-          dispatch(cleanCart());
-          setTimeout(() => {
-            router.replace({
-              pathname: "/",
-              params: { name },
-            });
-          }, 2000);
-        });
-      return;
-    }
-
-    // Show the modal with restaurant account details for payment
-    setModalVisible(true);
-  };
-
-  const handlePaymentConfirmation = () => {
-    setModalVisible(false);
-
     apiRequest
       .post("/order_item", {
         userId: user?.id,
         products: JSON.stringify(cartDetail),
         price: total,
-        paymentMethodId: 23,
+        paymentMethodId: 24,
       })
       .then(() => {
         showToast(
           "success",
-          "Payment Successful",
-          "Your order is being processed"
+          "Order was Successful",
+          "Pick Up at the counter in 10-25min"
         );
-
         dispatch(cleanCart());
-
-        router.replace({
-          pathname: "/order",
-          params: { name },
-        });
+        setTimeout(() => {
+          router.replace({
+            pathname: "/",
+            params: { name },
+          });
+        }, 4000);
       });
+    setModalVisible(false);
+    return;
+
+    // Show the modal with restaurant account details for payment
   };
+
   const details = restaurant?.details
     ? JSON.parse(restaurant.details as string)
     : {};
@@ -129,15 +91,18 @@ const PlaceOrder: React.FC<OrderFooterProps> = ({
     total > 0 && (
       <View style={styles.footer}>
         <View>
-          <Text style={styles.footerText}>Pay Using {selected?.name}</Text>
-          <Text style={styles.footerSubText}>{selected?.desc}</Text>
+          {/* <Text style={styles.footerText}>Pay Using {selected?.name}</Text>*/}
+          <Text style={styles.footerSubText}>service charge = 10</Text>
         </View>
-        <Pressable onPress={handleOrder} style={styles.placeOrderButton}>
+        <Pressable
+          onPress={() => setModalVisible(true)}
+          style={styles.placeOrderButton}
+        >
           <View style={{ flexDirection: "row", gap: 10 }}>
             <View>
               <Text style={styles.orderAmount}>
                 {general_data.symbol}
-                {Math.floor(total + 90)}
+                {Math.floor(total + 10)}
               </Text>
               <Text style={styles.orderTotal}>TOTAL</Text>
             </View>
@@ -165,10 +130,7 @@ const PlaceOrder: React.FC<OrderFooterProps> = ({
                 Name: {details?.account_name || " ABC Restaurant"}
               </Text>
 
-              <Pressable
-                onPress={handlePaymentConfirmation}
-                style={styles.confirmButton}
-              >
+              <Pressable onPress={handleOrder} style={styles.confirmButton}>
                 <Text style={styles.confirmButtonText}>I've Paid</Text>
               </Pressable>
 
