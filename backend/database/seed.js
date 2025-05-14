@@ -4,8 +4,8 @@ const seedTransactions = require("./seed/transaction");
 const seedRestaurant = require("./seed/restaurant");
 const seedProducts = require("./seed/product");
 
-// seedUsers(10);
+// seedUsers(7);
 // seedPaymentMethods();
 // seedTransactions(10);
 // seedRestaurant();
-seedProducts();
+// seedProducts();

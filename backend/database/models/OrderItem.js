@@ -12,6 +12,11 @@ const OrderItem = sequelize.define(
       allowNull: false,
       references: { model: User, key: "id" },
     },
+    resId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: { model: User, key: "id" },
+    },
     products: {
       type: DataTypes.JSON,
       allowNull: true,

@@ -40,12 +40,21 @@ export default function Logout() {
         <View style={styles.card}>
           <Text style={styles.message}>Are you sure you want to logout?</Text>
           {user?.role == "restaurant" && (
-            <Pressable
-              style={styles.resButton}
-              onPress={() => router.replace("/admin_restaurant")}
-            >
-              <Text style={styles.cancelText}>Restaurant Section</Text>
-            </Pressable>
+            <>
+              <Pressable
+                style={styles.resButton}
+                onPress={() => router.replace("/(home)/admin_restaurant")}
+              >
+                <Text style={styles.cancelText}>Restaurant Section</Text>
+              </Pressable>
+
+              <Pressable
+                style={styles.resButton}
+                onPress={() => router.replace("/(home)/order_review")}
+              >
+                <Text style={styles.cancelText}>Order Review</Text>
+              </Pressable>
+            </>
           )}
           <Pressable onPress={handleLogout} style={styles.logoutButton}>
             <Text style={styles.logoutText}>Logout</Text>

@@ -11,6 +11,7 @@ export default function _layout() {
         <Stack.Screen name="hotel" />
         <Stack.Screen name="cart" />
         <Stack.Screen name="order" />
+        <Stack.Screen name="order_review" />
         <Stack.Screen name="admin_restaurant" />
       </Stack>
     </Provider>

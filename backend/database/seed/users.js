@@ -8,16 +8,27 @@ const seedUsers = async (count = 10) => {
     // await sequelize.sync(); // Ensure tables exist
     await sequelize.sync();
 
+    const data = [
+      { name: "Forza cafe ", email: "forzacafe@gmail.com" },
+      { name: "Kemi bee cafe ", email: "kemibeecafe@gmail.com" },
+      { name: "Divine Cafe ", email: "divinecafe@gmail.com" },
+      { name: "y2kcafe ", email: "y2kcafe@gmail.com" },
+      { name: "blessedcafe ", email: "blessedcafe@gmail.com" },
+      { name: "buwacafeteria", email: "buwacafeteria@gmail.com" },
+      { name: "Jubilee ", email: "Jubilee@gmail.com" },
+      { name: "destinationcafe ", email: "destinationcafe@gmail.com" },
+    ];
+
     let users = [];
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < data.length; i++) {
       const plainPassword = "123123"; // Default password
       const salt = await bcrypt.genSalt(10);
       users.push({
-        name: faker.person.fullName(),
+        name: data[i].name,
         code: faker.string.alphanumeric(6),
         mobile: faker.phone.number("+91##########"),
         passwordSave: plainPassword,
-        email: faker.internet.email(),
+        email: data[i].email,
         googleID: faker.datatype.boolean() ? faker.string.uuid() : null,
         facebookID: faker.datatype.boolean() ? faker.string.uuid() : null,
         password: await bcrypt.hash(plainPassword, salt),

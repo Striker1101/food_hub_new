@@ -22,7 +22,6 @@ interface OrderFooterProps {
 
 const PlaceOrder: React.FC<OrderFooterProps> = ({ total, name, cart }) => {
   const dispatch = useDispatch();
-  const [user, setUser] = useState<UserType | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
   const router = useRouter();
   const [restaurant, setRestaurant] = useState<RestaurantType | null>(null);
@@ -30,14 +29,6 @@ const PlaceOrder: React.FC<OrderFooterProps> = ({ total, name, cart }) => {
     id: item?.id,
     quantity: item?.quantity,
   }));
-
-  useEffect(() => {
-    async function getUserData() {
-      const _user = await getUser();
-      setUser(_user);
-    }
-    getUserData();
-  }, []);
 
   useEffect(() => {
     async function fetchRestaurant() {
@@ -53,15 +44,18 @@ const PlaceOrder: React.FC<OrderFooterProps> = ({ total, name, cart }) => {
       }
     }
     fetchRestaurant();
-  }, [restaurant]);
+  }, []);
 
-  const handleOrder = () => {
+  const handleOrder = async () => {
+    const user = await getUser();
+    const restaurantID = await AsyncStorage.getItem("restaurantID");
     apiRequest
       .post("/order_item", {
         userId: user?.id,
+        resId: restaurantID,
         products: JSON.stringify(cartDetail),
         price: total,
-        paymentMethodId: 24,
+        paymentMethodId: 6,
       })
       .then(() => {
         showToast(
